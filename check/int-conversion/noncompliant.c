@@ -1,5 +1,18 @@
 /**
  * @file Test for integer conversion warnings.
+ *
+ * @par Risk Assessment
+ *
+ * | Severity | Likelihood | Remediation Cost | Priority | Level |
+ * | -------- | ---------- | ---------------- | -------- | ----- |
+ * | Low      | Probable   | High             | P2       | L3    |
+ *
+ * @see SEI CERT C Coding Standard: Rule INT36-C. Converting a pointer to
+ *   integer or integer to pointer
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT36-C.+Converting+a+pointer+to+integer+or+integer+to+pointer
+ *
+ * @see MISRA C:2012: Rule 11.4 A conversion should not be performed between a
+ *   pointer to object and an integer type.
  */
 
 
@@ -16,12 +29,12 @@ extern "C" {
 /**
  * Test warning when assigning integer literal to a pointer.
  */
-static void literal_test(void);
+static void qiip_intconversion_literal_test(void);
 
 /**
  * Test warning when assigning integer variable to a pointer.
  */
-static void variable_test(signed arg);
+static void qiip_intconversion_variable_test(signed arg);
 
 
 /**
@@ -35,7 +48,7 @@ signed main(void);
 #endif
 
 
-static void literal_test(void)
+static void qiip_intconversion_literal_test(void)
   {
 #ifndef QIIP_FIX
     void const * const ptr = 1;
@@ -47,7 +60,7 @@ static void literal_test(void)
   }
 
 
-static void variable_test(signed const arg)
+static void qiip_intconversion_variable_test(signed const arg)
   {
 #ifndef QIIP_FIX
     void const * const ptr = arg;
@@ -61,7 +74,7 @@ static void variable_test(signed const arg)
 
 signed main(void)
   {
-    literal_test();
-    variable_test(10);
+    qiip_intconversion_literal_test();
+    qiip_intconversion_variable_test(10);
     return EXIT_SUCCESS;
   }
