@@ -51,12 +51,14 @@ static void qiip_conversion_test(void)
     num = num + 5;
     signed score = num;
 #endif
-    if(score < 0){
+    if(score < 0)
+      {
         printf("Success!\n");
-    }
-    else{
+      }
+    else
+      {
         printf("Failure!\n");
-    }
+      }
   }
 
 

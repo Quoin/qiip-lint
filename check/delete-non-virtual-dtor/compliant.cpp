@@ -27,18 +27,20 @@ extern "C" {
 #endif
 
 
-struct Base {
-  virtual ~Base() = default;
-  virtual void f();
-};
+struct Base
+  {
+    virtual ~Base() = default;
+    virtual void f();
+  };
  
 struct Derived : Base {};
  
-void f() {
-  Base *b = new Derived();
-  // ...
-  delete b;
-}
-int main(){
+void f()
+  {
+    Base *b = new Derived();
+    delete b;
+  }
+int main()
+  {
     return 0;
-}
+  }

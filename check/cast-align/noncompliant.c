@@ -49,9 +49,10 @@ static void qiip_castalign_test(void)
     int temp = character;
     int *cp = &temp;
 #endif
-    if(cp == &temp){
+    if(cp == &temp)
+      {
       printf("Success!\n");
-    }
+      }
   }
 
 
