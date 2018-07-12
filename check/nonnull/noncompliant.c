@@ -60,11 +60,3 @@ signed main()
       qiip_nonnull_test();
   }
 
-
-
-
-// int main(){
-//     char* foo;
-//     foo = strdup(Foo);
-//     printf("%s\n", foo);
-// }

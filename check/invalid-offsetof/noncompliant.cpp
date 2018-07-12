@@ -41,11 +41,11 @@ struct D
         int i;
       };
   
-    void f()
-      {
-        size_t off = offsetof(D, i);
-        printf("The offset is %lu", off);
-      }
+void f()
+  {
+    size_t off = offsetof(D, i);
+    printf("The offset is %lu", off);
+  }
 
 signed main()
   {
