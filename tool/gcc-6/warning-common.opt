@@ -1,5 +1,3 @@
--W'no-system-headers'
-
 -W'all'
 -W'extra'
 -W'pedantic'
