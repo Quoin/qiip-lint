@@ -1,5 +1,5 @@
 /**
- * @file Test for cast alignment warinings.
+ * @file Test for cast alignment warning (-W'cast-align').
  * 
  * @par Risk Assessment
  * 
@@ -7,31 +7,31 @@
  * | -------- | ---------- | ---------------- | -------- | ----- |
  * | Low      | Probable   | Medium           | P4       | L3    |
  * 
- * @see SEI CERT C Coding Standard: Rule EXP36-C. Do not cast poinsters
- * into more strictly aligned pointer types
- * https://wiki.sei.cmu.edu/confluence/display/c/EXP36-C.+Do+not+cast+pointers+into+more+strictly+aligned+pointer+types
- * 
+ * @see SEI CERT C Coding Standard: Rule EXP36-C. Do not cast pointers
+ *   into more strictly aligned pointer types
+ *   https://wiki.sei.cmu.edu/confluence/display/c/EXP36-C.+Do+not+cast+pointers+into+more+strictly+aligned+pointer+types
  */
+
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-/**
- * Test warning when making a cast that increase alignment.
- */
-static void qiip_castalign_test(void);
 
 /**
  * Main entry point to program.
  */
-signed main(void);
+signed main(void) __attribute__((nothrow));
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * Test warning when making a cast that increases alignment.
+ */
+static void qiip_castalign_test(void) __attribute__((nothrow));
 
 #ifdef __cplusplus
 }
@@ -40,23 +40,28 @@ signed main(void);
 
 static void qiip_castalign_test(void)
   {
-#ifndef QIIP_FIX
-    char character = 'H';
-    int *temp = (int *)&character; /* This cast increase alignment */
-    char *cp = (char *)temp;
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+    char const character = 'H';
+
+    /* This cast increase alignment */
+    signed const * const tmp = (signed const *)&character;
+
+    char const * const cp = (char const *)tmp;
+    printf("cp=\"%p\".\n", cp);
 #else
-    char character = 'H';
-    int temp = character;
-    int *cp = &temp;
+    char const character = 'H';
+    signed const tmp = character;
+    signed const * const cp = &tmp;
+    printf("cp=\"%p\" tmp=\"%d\".\n", cp, tmp);
 #endif
-    if(cp == &temp)
-      {
-      printf("Success!\n");
-      }
   }
 
 
 signed main(void)
   {
+    signed const result = EXIT_SUCCESS;
+
     qiip_castalign_test();
+
+    return result;
   }

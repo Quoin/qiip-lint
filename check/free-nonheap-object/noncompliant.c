@@ -1,5 +1,5 @@
 /**
- * @file Test for free nonheap object warinings.
+ * @file Test for free nonheap object warning (-W'free-nonheap-object').
  * 
  * @par Risk Assessment
  * 
@@ -8,15 +8,21 @@
  * | High     | Likely     | Medium           | P18      | L1    |
  * 
  * @see SEI CERT C Coding Standard: Rule MEM34-C. Only free memory allocated
- * dynamically
- * https://wiki.sei.cmu.edu/confluence/display/c/MEM34-C.+Only+free+memory+allocated+dynamically
- * 
+ *   dynamically
+ *   https://wiki.sei.cmu.edu/confluence/display/c/MEM34-C.+Only+free+memory+allocated+dynamically
  */
 
-#include <stdlib.h>
+
 #include <stdio.h>
-#include <stddef.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stddef.h>
+
+
+/**
+ * Main entry point to program.
+ */
+signed main(void) __attribute__((nothrow));
 
 
 #ifdef __cplusplus
@@ -25,15 +31,9 @@ extern "C" {
 
 
 /**
- * Test warning when freeing objects that are nonheap.
+ * Test warning when freeing non-heap objects.
  */
-static void qiip_freenonheapobject_test(void);
-
-
-/**
- * Main entry point to program.
- */
-signed main(void);
+static void qiip_freenonheapobject_test(void) __attribute__((nothrow));
 
 
 #ifdef __cplusplus
@@ -43,21 +43,25 @@ signed main(void);
 
 static void qiip_freenonheapobject_test(void)
   {
-#ifndef QIIP_FIX
-    char string[] = "Hello world!\n";
-    printf("%s", string);
-    free(string);
+    char const msg[] = "hello, world";
+
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+    char string[sizeof msg] = "";
 #else
-    char* string = (char*) malloc(sizeof(char) * 20);
-    strcpy(string, "Hello world!\n");
-    printf("%s", string);
-    free(string);
+    char * const __restrict__ string = (char *)malloc(sizeof msg);
 #endif
+
+    strcpy(string, msg);
+    printf("string=\"%s\".\n", string);
+    free(string);
   }
 
 
-signed main()
+signed main(void)
   {
-      qiip_freenonheapobject_test();
-  }
+    signed const result = EXIT_SUCCESS;
 
+    qiip_freenonheapobject_test();
+
+    return result;
+  }
