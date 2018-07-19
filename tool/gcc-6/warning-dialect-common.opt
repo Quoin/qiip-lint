@@ -1,0 +1,5 @@
+-W'abi'
+-W'cpp'
+-W'normalized=nfkc'
+-W'openmp-simd'
+-W'hsa'
