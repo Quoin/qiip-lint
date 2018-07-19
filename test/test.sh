@@ -4,9 +4,8 @@
 
 testMakeFileList () {
     cd ..
-    cd itc-benchmarks/01.w_Defects
-    ls 1> filelist.txt
-    grep "\.c" filelist.txt 1> testlist.txt
+    cd check
+    ls 1> testlist.txt
 }
 
 testForErrorDetection () {
