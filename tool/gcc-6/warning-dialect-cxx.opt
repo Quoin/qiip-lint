@@ -1,0 +1,6 @@
+-W'no-c++0x-compat'
+-W'no-c++11-compat'
+-W'no-c++14-compat'
+-W'conditionally-supported'
+-W'no-namespaces'
+-W'non-template-friend'

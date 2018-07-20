@@ -8,7 +8,6 @@
 -W'invalid-offsetof'
 -W'literal-suffix'
 -W'multiple-inheritance'
--W'namespaces'
 -W'noexcept'
 -W'non-virtual-dtor'
 -W'overloaded-virtual'
