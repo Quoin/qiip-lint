@@ -27,6 +27,41 @@ CC ::= gcc-6
  ##
 CXX ::= g++-6
 
+
+TARGET_ARCH ::= -m'64' -m'tune=native'
+
+CFLAGS ::=\
+  -pipe\
+  -f'visibility=hidden'\
+  -f'lto'\
+  -f'pie'
+
+LDFLAGS ::=\
+  -pie\
+  -f'use-ld=gold'\
+  -Wl',--threads'\
+  -Wl',-optimize,1'\
+  -Wl',--gc-sections'\
+  -Wl',--icf,safe'\
+  -Wl',--build-id=sha1'\
+  -Wl',--as-needed'\
+  -Wl',--no-allow-multiple-definition'\
+  -Wl',--error-unresolved-symbols'\
+  -Wl',--no-undefined'\
+  -Wl',--no-allow-shlib-undefined'
+  -Wl',--unresolved-symbols=report-all'\
+  -Wl',--warn-common'\
+  -Wl',--detect-odr-violations'\
+  -Wl',--warn-execstack'\
+  -Wl',-z,nodelete'\
+  -Wl',-z,nodlopen'\
+  -Wl',-z,nodump'\
+  -Wl',-z,noexecstack'\
+  -Wl',-z,now'\
+  -Wl',-z,relro'\
+  -Wl',-z,text'
+
+
 ###
  # Compile command for compiling C as C++.
  ##
@@ -41,8 +76,13 @@ qiip_check_c_cxx_objs ::= $(patsubst %.c,build/%.c.cxx.o,$(qiip_check_c_srcs))
 qiip_check_cxx_objs ::= $(patsubst %.cpp,build/%.cxx.o,$(qiip_check_cxx_srcs))
 
 
+qiip_check_c_bins ::= $(patsubst %.c,build/%.c.bin,$(qiip_check_c_srcs))
+qiip_check_c_cxx_bins ::= $(patsubst %.c,build/%.c.cxx.bin,$(qiip_check_c_srcs))
+qiip_check_cxx_bins ::= $(patsubst %.cpp,build/%.cxx.bin,$(qiip_check_cxx_srcs))
+
+
 .PHONY : all
-all : $(qiip_check_c_objs) $(qiip_check_c_cxx_objs) $(qiip_check_cxx_objs)
+all : $(qiip_check_c_bins) $(qiip_check_c_cxx_bins) $(qiip_check_cxx_bins)
 
 .PHONY : clean
 clean :
@@ -93,6 +133,16 @@ build/check/%.cxx.o : CPPFLAGS ::=\
   @tool/gcc-6/warning-common.opt\
   @tool/gcc-6/warning-cxx.opt\
   -W'no-system-headers'
+
+
+build/check/%.c.bin : build/check/%.c.o
+	$(LINK.c) $(^) $(LOADLIBES) $(LDLIBS) -o '$(@)'
+
+build/check/%.c.cxx.bin : build/check/%.c.cxx.o
+	$(LINK.cc) $(^) $(LOADLIBES) $(LDLIBS) -o '$(@)'
+
+build/check/%.cxx.bin : build/check/%.cxx.o
+	$(LINK.cc) $(^) $(LOADLIBES) $(LDLIBS) -o '$(@)'
 
 
 build/check/%.c.o : check/%.c | $${@D}/
