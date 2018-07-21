@@ -3,7 +3,7 @@
 -W'discarded-array-qualifiers'
 -W'discarded-qualifiers'
 -W'implicit'
--W'implicit-function-declaration'
+-W'no-error=implicit-function-declaration'
 -W'implicit-int'
 -W'incompatible-pointer-types'
 -W'int-conversion'
