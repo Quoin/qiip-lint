@@ -19,6 +19,16 @@ CXX ::= g++-6
 COMPILE.c.cxx = $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
 
 
+qiip_check_c_srcs ::= $(wildcard check/*/*.c)
+qiip_check_cxx_srcs ::= $(wildcard check/*/*.cpp)
+
+qiip_check_c_objs ::= $(patsubst %.c,build/%.c.o,$(qiip_check_c_srcs))
+qiip_check_c_cxx_objs ::= $(patsubst %.c,build/%.c.cxx.o,$(qiip_check_c_srcs))
+qiip_check_cxx_objs ::= $(patsubst %.cpp,build/%.cxx.o,$(qiip_check_cxx_srcs))
+
+
+.PHONY : all
+all : $(qiip_check_c_objs) $(qiip_check_c_cxx_objs) $(qiip_check_cxx_objs)
 
 .PHONY : clean
 clean :
