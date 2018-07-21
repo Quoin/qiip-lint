@@ -47,11 +47,12 @@ struct S
 /**
  * b.cpp
  */
-class S
-  {
-public:
-    int a;
-  };
+// @todo Need to fix.
+//class S
+//  {
+//public:
+//    int a;
+//  };
 
 signed main()
   {

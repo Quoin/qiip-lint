@@ -13,26 +13,14 @@
  * 
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <cstddef>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
+#include <cstdlib>
 
 
 /**
  * Main entry point to program.
  */
 signed main(void);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 /**
  * S.h
@@ -41,17 +29,8 @@ struct S {
   int a;
 };
   
-/**
- * a.cpp
- */
-#include "S.h"
-  
-/**
- * b.cpp
- */
-#include "S.h"
 
-signed main()
+signed main(void)
   {
     return EXIT_SUCCESS;
   }
