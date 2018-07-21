@@ -56,7 +56,7 @@ static void qiip_shiftcountoverflow_test(void)
   }
 
 
-signed main()
+signed main(void)
   {
       qiip_shiftcountoverflow_test();
   }

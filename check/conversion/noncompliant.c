@@ -62,7 +62,7 @@ static void qiip_conversion_test(void)
   }
 
 
-signed main()
+signed main(void)
   {
       qiip_conversion_test();
   }

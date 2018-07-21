@@ -17,18 +17,6 @@
 #include <stdio.h>
 #include <stddef.h>
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-/**
- * Test warning when implicitly declaring integer.
- */
-static void qiip_implicitint_test(void);
-
-
 /**
  * Main entry point to program.
  */
@@ -36,21 +24,38 @@ signed main(void);
 
 
 #ifdef __cplusplus
+extern "C" {
+#endif
+
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+extern foo;
+#else
+extern signed foo;
+#endif 
+
+/**
+ * Test warning when implicitly declaring integer.
+ */
+static void qiip_implicitint_test(void);
+
+#ifdef __cplusplus
 }
 #endif
 
 
+signed foo = 0;
+
+
 static void qiip_implicitint_test(void)
   {
-#ifndef QIIP_FIX
-    extern foo;
-#else
-    extern int foo;
-#endif 
+    printf("foo=\"%d\".\n", foo);
   }
 
-signed main()
+signed main(void)
   {
-      qiip_implicitint_test();
-  }
+    signed const result = EXIT_SUCCESS;
 
+    qiip_implicitint_test();
+
+    return result;
+  }

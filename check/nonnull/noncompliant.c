@@ -18,7 +18,6 @@
 #include <stddef.h>
 #include <string.h>
 
-#define Foo NULL
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,17 +44,16 @@ static void qiip_nonnull_test(void)
   {
 #ifndef QIIP_FIX
     char* foo;
-    foo = strdup(Foo);
+    foo = strdup(NULL);
     printf("%s\n", foo);
 #else
-    char* foo;
-    foo = "Hello World!\n";
-    printf("%s\n", foo);
+    char const * const msg = "hello, world";
+    printf("msg=\"%s\".\n", msg);
 #endif
   }
 
 
-signed main()
+signed main(void)
   {
       qiip_nonnull_test();
   }

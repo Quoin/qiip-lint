@@ -1,7 +1,7 @@
 -W'c++-compat'
 -W'no-c90-c99-compat'
 -W'no-c99-c11-compat'
--W'declaration-after-statement'
+-W'no-declaration-after-statement'
 -W'no-long-long'
 -W'old-style-declaration'
 -W'old-style-definition'

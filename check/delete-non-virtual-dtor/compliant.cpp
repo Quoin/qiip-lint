@@ -8,39 +8,42 @@
  * | Low      | Likely     | Low              | P9       | L2    |
  * 
  * @see SEI CERT C Coding Standard: Rule ARR30-C. Do not delete a polymorphic
- * object without a virtual destructor
- * https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP52-CPP.+Do+not+delete+a+polymorphic+object+without+a+virtual+destructor
- * 
+ *   object without a virtual destructor
+ *   https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP52-CPP.+Do+not+delete+a+polymorphic+object+without+a+virtual+destructor
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
+
+#include <cstdio>
+#include <cstdlib>
+#include <cstddef>
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#ifdef __cplusplus
-}
-#endif
+auto main [[gnu::nothrow]] (void) -> signed;
 
 
-struct Base
+struct base
   {
-    virtual ~Base() = default;
-    virtual void f();
+    virtual ~base(void) = default;
+    virtual auto f(void) -> void;
   };
  
-struct Derived : Base {};
- 
-void f()
+struct derived : base {};
+
+auto base::f(void) -> void
   {
-    Base *b = new Derived();
+    base * const b = new derived();
+
+    std::printf("derived created.\n");
+
     delete b;
   }
-int main()
+
+auto main(void) -> signed
   {
-    return 0;
+    auto const result{EXIT_SUCCESS};
+
+    derived d{};
+    std::printf("main.\n");
+
+    return result;
   }

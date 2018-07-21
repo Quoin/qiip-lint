@@ -52,7 +52,7 @@ static void qiip_castalign_test(void)
     char const character = 'H';
     signed const tmp = character;
     signed const * const cp = &tmp;
-    printf("cp=\"%p\" tmp=\"%d\".\n", cp, tmp);
+    printf("cp=\"%p\" tmp=\"%d\".\n", (void const *)cp, tmp);
 #endif
   }
 

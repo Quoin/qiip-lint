@@ -28,7 +28,7 @@ extern "C" {
 
 struct Base
   {
-    virtual void f();
+    virtual void f(void);
   };
 
 struct Derived : Base

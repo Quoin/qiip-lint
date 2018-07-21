@@ -72,7 +72,7 @@ static void qiip_arrayoutofbound_negative_test(void)
 
 
 
-signed main()
+signed main(void)
   {
       qiip_arrayoutofbound_larger_test();
       qiip_arrayoutofbound_negative_test();

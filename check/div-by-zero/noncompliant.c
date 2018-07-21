@@ -56,7 +56,7 @@ static void qiip_divbyzero_test(void)
   }
 
 
-signed main()
+signed main(void)
   {
       qiip_divbyzero_test();
   }

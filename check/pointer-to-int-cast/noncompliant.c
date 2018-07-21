@@ -13,10 +13,11 @@
  * 
  */
 
-#include <stdlib.h>
 #include <stdio.h>
-#include <stddef.h>
+#include <inttypes.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <stddef.h>
 
 
 #ifdef __cplusplus
@@ -46,16 +47,16 @@ static void qiip_pointertointcast_test(void)
 #ifndef QIIP_FIX
     char pointer[] = "c";
     unsigned int num = (unsigned int) pointer;
-    printf("The number is %d", num);
+    printf("The number is %u", num);
 #else
     char pointer[] = "c";
     uintptr_t num = (uintptr_t) pointer;
-    printf("The number is %ld", num);
+    printf("num=\"%" PRIuPTR "\".\n", num);
 #endif
   }
 
 
-signed main()
+signed main(void)
   {
       qiip_pointertointcast_test();
   }

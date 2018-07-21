@@ -13,45 +13,40 @@
  * 
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
+
+#include <cstdio>
+#include <cstdlib>
 #include <cstddef>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 
 /**
  * Main entry point to program.
  */
-signed main(void);
-
-
-#ifdef __cplusplus
-}
-#endif
+auto main(void) -> signed;
 
 
 struct D
   {
-    virtual void f() {}
+    void f(void);
     struct InnerStandardLayout
       {
         int i;
       } inner;
   };
  
-void f()
+void D::f(void)
   {
-    size_t off = offsetof(D::InnerStandardLayout, i);
-    printf("The offset is %lu", off);
+    auto const off{offsetof(D::InnerStandardLayout, i)};
+    std::printf("The offset is %lu", off);
   }
 
-signed main()
+auto main(void) -> signed
   {
-    return EXIT_SUCCESS;
+    auto const result{EXIT_SUCCESS};
+
+    D tmp{};
+    tmp.f();
+
+    return result;
   }
 
