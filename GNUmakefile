@@ -1,15 +1,29 @@
+#!/usr/bin/make
+#
+# GNU Make build script.
+#
+# This uses the following environment variables to control the compilation:
+#
+# - QIIP_FIX set to 1 to compile "fixed" version of all test programs.
+
+
 .POSIX :
 .ONESHELL :
 .SECONDEXPANSION :
 .SECONDARY :
 
+
+ifndef QIIP_FIX
+  QIIP_FIX ::= 0
+endif
+
 ###
- # Compiler.
+ # C compiler.
  ##
 CC ::= gcc-6
 
 ###
- # Compiler.
+ # C++ compiler.
  ##
 CXX ::= g++-6
 
@@ -41,7 +55,7 @@ clean :
  # @note -W'no-system-headers' must be last.
  #
 build/check/%.c.o : CPPFLAGS ::=\
-  -D'QIIP_FIX=0'\
+  -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c' -std='c11' -O'3' -D'_FORTIFY_SOURCE=2'\
   @tool/gcc-6/warning-dialect-common.opt\
   @tool/gcc-6/warning-dialect-c.opt\
@@ -55,7 +69,7 @@ build/check/%.c.o : CPPFLAGS ::=\
  # @note -W'no-system-headers' must be last.
  #
 build/check/%.c.cxx.o : CPPFLAGS ::=\
-  -D'QIIP_FIX=0'\
+  -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c++' -std='c++17' -O'3' -D'_FORTIFY_SOURCE=2' -D'_GLIBCXX_CONCEPT_CHECKS=1' -D'_GLIBCXX_ASSERTIONS=1'\
   @tool/gcc-6/warning-dialect-common.opt\
   @tool/gcc-6/warning-dialect-c-cxx.opt\
@@ -69,7 +83,7 @@ build/check/%.c.cxx.o : CPPFLAGS ::=\
  # @note -W'no-system-headers' must be last.
  #
 build/check/%.cxx.o : CPPFLAGS ::=\
-  -D'QIIP_FIX=0'\
+  -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c++' -std='c++17' -O'3' -D'_FORTIFY_SOURCE=2' -D'_GLIBCXX_CONCEPT_CHECKS=1' -D'_GLIBCXX_ASSERTIONS=1'\
   @tool/gcc-6/warning-dialect-common.opt\
   @tool/gcc-6/warning-dialect-cxx.opt\
