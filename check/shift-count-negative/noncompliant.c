@@ -26,9 +26,19 @@ extern "C" {
 
 
 /**
- * Test warning when shifting expressions by negative count.
+ * Test warning when shifting signed long by negative count.
  */
-static void qiip_shiftcountnegative_test(void);
+static void qiip_signedlongshiftcountnegative_test(void);
+
+/**
+ * Test warning when right shifting int by negative count.
+ */
+static void qiip_intrightshiftcountnegative_test(void);
+
+/**
+ * Test warning when left shifting int by negative count.
+ */
+static void qiip_intleftshiftcountnegative_test(void);
 
 
 /**
@@ -42,7 +52,7 @@ signed main(void);
 #endif
 
 
-static void qiip_shiftcountnegative_test(void)
+static void qiip_signedlongshiftcountnegative_test(void)
   {
 #ifndef QIIP_FIX
     signed long a = 10000;
@@ -55,8 +65,35 @@ static void qiip_shiftcountnegative_test(void)
 #endif
   }
 
+static void qiip_intrightshiftcountnegative_test(void)
+  {
+#ifndef QIIP_FIX
+    int a = 1;
+    int num = a >> -1;
+    printf("The number is %ld", num);
+#else
+    int a = 1;
+    int num = a >> 10;
+    printf("The number is %ld", num);
+#endif
+  }
+
+static void qiip_intleftshiftcountnegative_test(void)
+  {
+#ifndef QIIP_FIX
+    int a = 1;
+    int num = a << -1;
+    printf("The number is %ld", num);
+#else
+    int a = 1;
+    int num = a << 10;
+    printf("The number is %ld", num);
+#endif
+  }
+
 
 signed main(void)
   {
-      qiip_shiftcountnegative_test();
+      qiip_signedlongshiftcountnegative_test();
+      qiip_intrightshiftcountnegative_test();
   }
