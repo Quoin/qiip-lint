@@ -8,24 +8,25 @@
  * | Low      | Unlikely   | Low              | P3       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule DCL31-C. Declare identifiers before
- * using them
- * https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
- * 
+ *   using them
+ *   https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
  */
 
-#include <stdlib.h>
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * Main entry point to program.
  */
 signed main(void);
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #if !(defined __cplusplus) && !((defined QIIP_FIX) && (1 == QIIP_FIX))
 extern foo;
@@ -43,6 +44,9 @@ static void qiip_implicitint_test(void);
 #endif
 
 
+/**
+ * Definition of object foo.
+ */
 signed foo = 0;
 
 
