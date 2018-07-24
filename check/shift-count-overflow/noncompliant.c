@@ -1,5 +1,5 @@
 /**
- * @file Test for shift count overflow warinings.
+ * @file Test for shift count overflow warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,9 +8,9 @@
  * | Low      | Unlikely   | Medium           | P2       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule INT34-C. Do not shift an expression
- * by a negative number of bits or by greater than or equal to the number of
- * bits that exist in the operant
- * https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand
+ *   by a negative number of bits or by greater than or equal to the number of
+ *   bits that exist in the operant
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand
  * 
  */
 
@@ -64,7 +64,7 @@ signed main(void);
 
 static void qiip_signedlongshiftcountoverflow_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     signed long a = 10;
     signed long num = a << 10000;
     printf("The number is %ld", num);
@@ -77,7 +77,7 @@ static void qiip_signedlongshiftcountoverflow_test(void)
 
 static void qiip_intleftshiftcountoverflow_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 1;
     int num = a << 32;
     printf("The number is %ld", num);
@@ -90,7 +90,7 @@ static void qiip_intleftshiftcountoverflow_test(void)
 
 static void qiip_longleftshiftcountoverflow_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     long a = 1;
     long num = a << 32;
     printf("The number is %ld", num);
@@ -103,7 +103,7 @@ static void qiip_longleftshiftcountoverflow_test(void)
 
 static void qiip_unsignedintleftshiftcountoverflow_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     unsigned int a = 1;
     unsigned int num = a << 32;
     printf("The number is %ld", num);
@@ -116,7 +116,7 @@ static void qiip_unsignedintleftshiftcountoverflow_test(void)
 
 static void qiip_unsignedlongleftshiftcountoverflow_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     unsigned long a = 1;
     unsigned long num = a << 32;
     printf("The number is %ld", num);
@@ -130,9 +130,11 @@ static void qiip_unsignedlongleftshiftcountoverflow_test(void)
 
 signed main(void)
   {
-      qiip_signedlongshiftcountoverflow_test();
-      qiip_intleftshiftcountoverflow_test();
-      qiip_longleftshiftcountoverflow_test();
-      qiip_unsignedintleftshiftcountoverflow_test();
-      qiip_unsignedlongleftshiftcountoverflow_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_signedlongshiftcountoverflow_test();
+    qiip_intleftshiftcountoverflow_test();
+    qiip_longleftshiftcountoverflow_test();
+    qiip_unsignedintleftshiftcountoverflow_test();
+    qiip_unsignedlongleftshiftcountoverflow_test();
+    return result;
   }

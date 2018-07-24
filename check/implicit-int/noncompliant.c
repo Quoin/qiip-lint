@@ -1,5 +1,5 @@
 /**
- * @file Test for implicit integer declaration warinings.
+ * @file Test for implicit integer declaration warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Low      | Unlikely   | Low              | P3       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule DCL31-C. Declare identifiers before
- * using them
- * https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
+ *   using them
+ *   https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
  * 
  */
 
@@ -54,8 +54,6 @@ static void qiip_implicitint_test(void)
 signed main(void)
   {
     signed const result = EXIT_SUCCESS;
-
     qiip_implicitint_test();
-
     return result;
   }

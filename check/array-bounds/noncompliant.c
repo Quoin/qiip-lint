@@ -1,5 +1,5 @@
 /**
- * @file Test for array out of bound warinings.
+ * @file Test for array out of bound warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | High     | Likely     | High             | P9       | L2    |
  * 
  * @see SEI CERT C Coding Standard: Rule ARR30-C. Do not form or use
- * out-of-bounds pointers or array subscripts
- * https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
+ *   out-of-bounds pointers or array subscripts
+ *   https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
  * 
  */
 
@@ -47,7 +47,7 @@ signed main(void);
 
 static void qiip_arrayoutofbound_larger_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int scores[3] = {8, 7, 9};
     scores[3] = 10;
 #else
@@ -60,7 +60,7 @@ static void qiip_arrayoutofbound_larger_test(void)
 
 static void qiip_arrayoutofbound_negative_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int scores[3] = {8, 7, 9};
     scores[-1] = 10;
 #else
@@ -74,7 +74,9 @@ static void qiip_arrayoutofbound_negative_test(void)
 
 signed main(void)
   {
+      signed const result = EXIT_SUCCESS;
       qiip_arrayoutofbound_larger_test();
       qiip_arrayoutofbound_negative_test();
+      return result;
   }
 

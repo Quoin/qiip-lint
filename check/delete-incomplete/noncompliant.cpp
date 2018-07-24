@@ -1,5 +1,5 @@
 /**
- * @file Test for delete incomplete warinings.
+ * @file Test for delete incomplete warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Medium   | Unlikely   | Medium           | P4       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule ARR30-C. Do not cast or delete
- * pointers to incomplete classes
- * https://wiki.sei.cmu.edu/confluence/display/cplusplus/EXP57-CPP.+Do+not+cast+or+delete+pointers+to+incomplete+classes
+ *   pointers to incomplete classes
+ *   https://wiki.sei.cmu.edu/confluence/display/cplusplus/EXP57-CPP.+Do+not+cast+or+delete+pointers+to+incomplete+classes
  * 
  */
 
@@ -42,7 +42,7 @@ signed main(void);
 
 static void qiip_deleteincomplete_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     class Handle
       {
         class Body *impl; // Declaration of a pointer to an incomplete class
@@ -65,5 +65,7 @@ static void qiip_deleteincomplete_test(void)
 
 signed main()
   {
-      qiip_deleteincomplete_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_deleteincomplete_test();
+    return result;
   }

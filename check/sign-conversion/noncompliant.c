@@ -1,5 +1,5 @@
 /**
- * @file Test for sign conversion warinings.
+ * @file Test for sign conversion warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | High     | Probable   | Low              | P6       | L2    |
  * 
  * @see SEI CERT C Coding Standard: Rule INT31-C. Ensure that integer
- * conversions do not result in lost or misinterpreted data
- * https://wiki.sei.cmu.edu/confluence/display/c/INT31-C.+Ensure+that+integer+conversions+do+not+result+in+lost+or+misinterpreted+data
+ *   conversions do not result in lost or misinterpreted data
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT31-C.+Ensure+that+integer+conversions+do+not+result+in+lost+or+misinterpreted+data
  * 
  */
 
@@ -42,7 +42,7 @@ signed main(void);
 
 static void qiip_signconversion_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int num = -10;
     num = num + 5;
     unsigned score = num;
@@ -51,19 +51,14 @@ static void qiip_signconversion_test(void)
     num = num + 5;
     signed score = num;
 #endif
-    if(score < 0)
-      {
-        printf("Success!\n");
-      }
-    else
-      {
-        printf("Failure!\n");
-      }
+    printf("%d", score);
   }
 
 
 signed main(void)
   {
-      qiip_signconversion_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_signconversion_test();
+    return result;
   }
 

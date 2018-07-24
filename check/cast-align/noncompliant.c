@@ -60,8 +60,6 @@ static void qiip_castalign_test(void)
 signed main(void)
   {
     signed const result = EXIT_SUCCESS;
-
     qiip_castalign_test();
-
     return result;
   }

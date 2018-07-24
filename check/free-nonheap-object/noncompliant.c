@@ -60,8 +60,6 @@ static void qiip_freenonheapobject_test(void)
 signed main(void)
   {
     signed const result = EXIT_SUCCESS;
-
     qiip_freenonheapobject_test();
-
     return result;
   }

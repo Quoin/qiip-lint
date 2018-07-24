@@ -1,5 +1,5 @@
 /**
- * @file Test for zero as null pointer warinings.
+ * @file Test for zero as null pointer warnings.
  *
  * @par Risk Assessment
  *

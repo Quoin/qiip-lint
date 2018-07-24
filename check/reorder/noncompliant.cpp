@@ -1,5 +1,5 @@
 /**
- * @file Test for reorder warinings.
+ * @file Test for reorder warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Medium   | Unlikely   | Medium           | P4       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule OOP53-CPP. Write constructor
- * member initializers in the canonical order
- * https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP53-CPP.+Write+constructor+member+initializers+in+the+canonical+order
+ *   member initializers in the canonical order
+ *   https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP53-CPP.+Write+constructor+member+initializers+in+the+canonical+order
  * 
  */
 
@@ -44,7 +44,7 @@ signed main(void);
 
 static void qiip_reorder_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     class C
       {
         int dependsOnSomeVal;
@@ -71,19 +71,7 @@ static void qiip_reorder_test(void)
 
 signed main()
   {
-      qiip_reorder_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_reorder_test();
+    return result;
   }
-
-// class C
-// {
-//     int dependsOnSomeVal;
-//     int someVal;
-
-//   public:
-//     C(int val) : someVal(val), dependsOnSomeVal(someVal + 1) {}
-// };
-
-// int main()
-// {
-//     return 0;
-// }

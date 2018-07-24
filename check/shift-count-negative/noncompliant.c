@@ -1,5 +1,5 @@
 /**
- * @file Test for shift count negative warinings.
+ * @file Test for shift count negative warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,9 +8,9 @@
  * | Low      | Unlikely   | Medium           | P2       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule INT34-C. Do not shift an expression
- * by a negative number of bits or by greater than or equal to the number of
- * bits that exist in the operant
- * https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand
+ *   by a negative number of bits or by greater than or equal to the number of
+ *   bits that exist in the operant
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand
  * 
  */
 
@@ -54,7 +54,7 @@ signed main(void);
 
 static void qiip_signedlongshiftcountnegative_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     signed long a = 10000;
     signed long num = a << -10;
     printf("The number is %ld", num);
@@ -67,7 +67,7 @@ static void qiip_signedlongshiftcountnegative_test(void)
 
 static void qiip_intrightshiftcountnegative_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 1;
     int num = a >> -1;
     printf("The number is %ld", num);
@@ -80,7 +80,7 @@ static void qiip_intrightshiftcountnegative_test(void)
 
 static void qiip_intleftshiftcountnegative_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 1;
     int num = a << -1;
     printf("The number is %ld", num);
@@ -94,6 +94,8 @@ static void qiip_intleftshiftcountnegative_test(void)
 
 signed main(void)
   {
-      qiip_signedlongshiftcountnegative_test();
-      qiip_intrightshiftcountnegative_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_signedlongshiftcountnegative_test();
+    qiip_intrightshiftcountnegative_test();
+    return result;
   }

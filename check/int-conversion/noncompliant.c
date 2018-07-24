@@ -50,7 +50,7 @@ signed main(void);
 
 static void qiip_intconversion_literal_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     void const * const ptr = 1;
 #else
     void const * const ptr = NULL;
@@ -62,7 +62,7 @@ static void qiip_intconversion_literal_test(void)
 
 static void qiip_intconversion_variable_test(signed const arg)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     void const * const ptr = arg;
     printf("arg=\"%d\" ptr=\"%p\".\n", arg, ptr);
 #else
@@ -74,7 +74,8 @@ static void qiip_intconversion_variable_test(signed const arg)
 
 signed main(void)
   {
+    signed const result = EXIT_SUCCESS;
     qiip_intconversion_literal_test();
     qiip_intconversion_variable_test(10);
-    return EXIT_SUCCESS;
+    return result;
   }
