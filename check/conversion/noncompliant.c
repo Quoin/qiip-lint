@@ -8,13 +8,13 @@
  * | High     | Probable   | Low              | P6       | L2    |
  * 
  * @see SEI CERT C Coding Standard: Rule INT31-C. Ensure that integer
- * conversions do not result in lost or misinterpreted data
- * https://wiki.sei.cmu.edu/confluence/display/c/INT31-C.+Ensure+that+integer+conversions+do+not+result+in+lost+or+misinterpreted+data
- * 
+ *   conversions do not result in lost or misinterpreted data
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT31-C.+Ensure+that+integer+conversions+do+not+result+in+lost+or+misinterpreted+data
  */
 
-#include <stdlib.h>
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>
 
 
@@ -51,12 +51,12 @@ signed main(void);
 
 static void qiip_conversion_test(void)
   {
-#ifndef QIIP_FIX
-    int num = -10;
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+    signed num = -10;
     num = num + 5;
     unsigned score = num;
 #else
-    int num = -10;
+    signed num = -10;
     num = num + 5;
     signed score = num;
 #endif
@@ -66,13 +66,13 @@ static void qiip_conversion_test(void)
 
 static void qiip_shorttocharconversion_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     char temp;
-    short a = 0x80;
+    signed short a = 0x80;
 	  temp = a;
     printf("%c", temp);
 #else
-    short temp;
+    signed short temp;
 	  char a = 0x7f;
 	  temp = a;
     printf("%hd", temp);
@@ -82,26 +82,25 @@ static void qiip_shorttocharconversion_test(void)
 
 static void qiip_inttoshortconversion_test(void)
   {
-#ifndef QIIP_FIX
-    short temp;
-    int a = 0x8000;
-	  temp = a;
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+    signed short temp;
+    signed a = 0x8000;
+    temp = a;
     printf("%hd", temp);
 #else
-    int temp;
-  	short a = 0x7fff;
-	  temp = a;
+    signed temp;
+    signed short a = 0x7fff;
+    temp = a;
     printf("%d", temp);
 #endif
-
   }
 
 
-
 signed main(void)
->>>>>>> 0456c7ea4b353800e0b843c0bb9bcf1d375379ff
   {
-      qiip_conversion_test();
-      qiip_shorttocharconversion_test();
-      qiip_inttoshortconversion_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_conversion_test();
+    qiip_shorttocharconversion_test();
+    qiip_inttoshortconversion_test();
+    return result;
   }
