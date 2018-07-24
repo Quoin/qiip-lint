@@ -27,7 +27,7 @@ signed main(void);
 extern "C" {
 #endif
 
-#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+#if !(defined __cplusplus) && !((defined QIIP_FIX) && (1 == QIIP_FIX))
 extern foo;
 #else
 extern signed foo;
