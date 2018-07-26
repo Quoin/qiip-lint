@@ -1,5 +1,5 @@
 /**
- * @file Test for One Definition Rule volations warinings.
+ * @file Test for One Definition Rule volations warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Hight    | Unlikely   | High             | P3       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule EXP59-CPP. Obey the one-definition
- * rule
- * https://wiki.sei.cmu.edu/confluence/display/cplusplus/DCL60-CPP.+Obey+the+one-definition+rule
+ *   rule
+ *   https://wiki.sei.cmu.edu/confluence/display/cplusplus/DCL60-CPP.+Obey+the+one-definition+rule
  * 
  */
 

@@ -1,5 +1,5 @@
 /**
- * @file Test for invalid offset of warinings.
+ * @file Test for invalid offset of warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Medium   | Unlikely   | Medium           | P4       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule EXP59-CPP. Use offsetof() on
- * valid types and members
- * https://wiki.sei.cmu.edu/confluence/display/cplusplus/EXP59-CPP.+Use+offsetof%28%29+on+valid+types+and+members
+ *   valid types and members
+ *   https://wiki.sei.cmu.edu/confluence/display/cplusplus/EXP59-CPP.+Use+offsetof%28%29+on+valid+types+and+members
  * 
  */
 

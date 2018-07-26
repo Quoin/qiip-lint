@@ -1,5 +1,5 @@
 /**
- * @file Test for non-NULL warinings.
+ * @file Test for non-NULL warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Medium   | Probable   | High             | P4       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule ARR30-C. Do not form or use
- * out-of-bounds pointers or array subscripts
- * https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
+ *   out-of-bounds pointers or array subscripts
+ *   https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts
  * 
  */
 
@@ -42,7 +42,7 @@ signed main(void);
 
 static void qiip_nonnull_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     char* foo;
     foo = strdup(NULL);
     printf("%s\n", foo);
@@ -55,6 +55,8 @@ static void qiip_nonnull_test(void)
 
 signed main(void)
   {
-      qiip_nonnull_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_nonnull_test();
+    return result;
   }
 

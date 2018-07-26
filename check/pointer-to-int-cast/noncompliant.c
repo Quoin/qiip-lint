@@ -1,5 +1,5 @@
 /**
- * @file Test for pointer to int cast warinings.
+ * @file Test for pointer to int cast warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Low      | Probable   | High             | P2       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule INT36-C. Converting a pointer to
- * integer or integer to pointer
- * https://wiki.sei.cmu.edu/confluence/display/c/INT36-C.+Converting+a+pointer+to+integer+or+integer+to+pointer
+ *   integer or integer to pointer
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT36-C.+Converting+a+pointer+to+integer+or+integer+to+pointer
  * 
  */
 
@@ -44,7 +44,7 @@ signed main(void);
 
 static void qiip_pointertointcast_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     char pointer[] = "c";
     unsigned int num = (unsigned int) pointer;
     printf("The number is %u", num);
@@ -58,5 +58,7 @@ static void qiip_pointertointcast_test(void)
 
 signed main(void)
   {
-      qiip_pointertointcast_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_pointertointcast_test();
+    return result;
   }

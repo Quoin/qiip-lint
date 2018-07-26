@@ -1,5 +1,5 @@
 /**
- * @file Test for delete with non-virtual destructor warinings.
+ * @file Test for delete with non-virtual destructor warnings.
  * 
  * @par Risk Assessment
  * 

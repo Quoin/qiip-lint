@@ -1,5 +1,5 @@
 /**
- * @file Test for division by zero warinings.
+ * @file Test for division by zero warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Low      | Likely     | Medium           | P6       | L2    |
  * 
  * @see SEI CERT C Coding Standard: Rule INT33-C. Ensure that division
- * and remainder operations do not result in divide-by-zero errors
- * https://wiki.sei.cmu.edu/confluence/display/c/INT33-C.+Ensure+that+division+and+remainder+operations+do+not+result+in+divide-by-zero+errors
+ *   and remainder operations do not result in divide-by-zero errors
+ *   https://wiki.sei.cmu.edu/confluence/display/c/INT33-C.+Ensure+that+division+and+remainder+operations+do+not+result+in+divide-by-zero+errors
  * 
  */
 
@@ -43,7 +43,7 @@ signed main(void);
 
 static void qiip_divbyzero_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 3;
     int result;
     result = a / 0; /*Division by zero error */
@@ -58,6 +58,8 @@ static void qiip_divbyzero_test(void)
 
 signed main(void)
   {
-      qiip_divbyzero_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_divbyzero_test();
+    return result;
   }
 

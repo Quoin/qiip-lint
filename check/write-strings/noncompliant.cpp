@@ -1,5 +1,5 @@
 /**
- * @file Test for write string warinings.
+ * @file Test for write string warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Low      | Likely     | Low              | P9       | L2    |
  * 
  * @see SEI CERT C Coding Standard: Rule STR30-C. Do not attempt to modify
- * string literals
- * https://wiki.sei.cmu.edu/confluence/display/c/STR30-C.+Do+not+attempt+to+modify+string+literals
+ *   string literals
+ *   https://wiki.sei.cmu.edu/confluence/display/c/STR30-C.+Do+not+attempt+to+modify+string+literals
  * 
  */
 
@@ -42,7 +42,7 @@ signed main(void);
 
 static void qiip_writestring_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     char* string = "Hello world!\n";
     printf("%s", string);
 #else
@@ -54,6 +54,8 @@ static void qiip_writestring_test(void)
 
 signed main()
   {
-      qiip_writestring_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_writestring_test();
+    return result;
   }
 

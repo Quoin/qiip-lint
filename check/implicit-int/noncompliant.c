@@ -1,5 +1,5 @@
 /**
- * @file Test for implicit integer declaration warinings.
+ * @file Test for implicit integer declaration warnings.
  * 
  * @par Risk Assessment
  * 
@@ -58,8 +58,6 @@ static void qiip_implicitint_test(void)
 signed main(void)
   {
     signed const result = EXIT_SUCCESS;
-
     qiip_implicitint_test();
-
     return result;
   }

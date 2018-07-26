@@ -1,5 +1,5 @@
 /**
- * @file Test for float implicit conversion warinings.
+ * @file Test for float implicit conversion warnings.
  * 
  * @par Risk Assessment
  * 
@@ -8,8 +8,8 @@
  * | Low      | Unlikely   | Low              | P3       | L3    |
  * 
  * @see SEI CERT C Coding Standard: Rule FLP34-C. Ensure that floating-point
- * conversions are within range of the new type
- * https://wiki.sei.cmu.edu/confluence/display/c/FLP34-C.+Ensure+that+floating-point+conversions+are+within+range+of+the+new+type
+ *   conversions are within range of the new type
+ *   https://wiki.sei.cmu.edu/confluence/display/c/FLP34-C.+Ensure+that+floating-point+conversions+are+within+range+of+the+new+type
  * 
  */
 
@@ -43,7 +43,7 @@ signed main(void);
 
 static void qiip_floatconversion_test(void)
   {
-#ifndef QIIP_FIX
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     float num = 10.0;
     num = num + 5.5;
     int score = fabsf(num); /* Implicit conversion that reduce precision. */
@@ -64,6 +64,8 @@ static void qiip_floatconversion_test(void)
 
 signed main(void)
   {
-      qiip_floatconversion_test();
+    signed const result = EXIT_SUCCESS;
+    qiip_floatconversion_test();
+    return result;
   }
 
