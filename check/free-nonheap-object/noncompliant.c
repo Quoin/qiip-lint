@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <stddef.h>
 
 
@@ -90,11 +91,9 @@ static void qiip_constantiffree_test(void)
         free(string);
       }
 #else
-    char* string="a";
-	  if(0)
-      {
-        free(string);
-      }
+    char const * const string = "a";
+    printf("string=\"%s\".\n", string);
+    /* Memory cleaned automatically. */
 #endif
   }
 
@@ -108,12 +107,8 @@ static void qiip_variableiffree_test(void)
         free(string);
       }
 #else
-    char* string="a";
-    signed temp = 1;
-	  if(temp > 1)
-      {
-        free(string);
-      }
+    char string[] = "a";
+    free(string);
 #endif
   }
 

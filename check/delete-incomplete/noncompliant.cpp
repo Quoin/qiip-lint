@@ -13,15 +13,11 @@
  * 
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
+
 #include <memory>
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <cstdio>
+#include <cstdlib>
+#include <cstddef>
 
 
 /**
@@ -33,11 +29,6 @@ static void qiip_deleteincomplete_test(void);
  * Main entry point to program.
  */
 signed main(void);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 
 static void qiip_deleteincomplete_test(void)
@@ -60,10 +51,11 @@ static void qiip_deleteincomplete_test(void)
       };
 #endif
 
+    printf("I'm really doing something.\n");
   }
 
 
-signed main()
+signed main(void)
   {
     signed const result = EXIT_SUCCESS;
     qiip_deleteincomplete_test();
