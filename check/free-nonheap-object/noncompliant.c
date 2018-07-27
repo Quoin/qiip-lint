@@ -135,7 +135,7 @@ static void qiip_arrayofpointerfree_test(void)
     char *arr1 = (char*) calloc(5, sizeof(char));
     char *arr2 = (char*) calloc(5, sizeof(char));
     char **parr[2] = {&arr1, &arr2};
-    int i, j = 1;
+    signed i, j = 1;
     if(arr2 != NULL)
       {
         arr2[0] = 10.0;
@@ -151,7 +151,7 @@ static void qiip_arrayofpointerfree_test(void)
     char *arr1 = (char*) calloc(5, sizeof(char));
     char *arr2 = (char*) calloc(5, sizeof(char));
     char **parr[2] = {&arr1, &arr2};
-    int i, j = 1;
+    signed i, j = 1;
     if(arr2 != NULL)
       {
         arr2[0] = 10.0;
@@ -168,18 +168,18 @@ static void qiip_arrayofpointerfree_test(void)
 static void qiip_pointertypefree_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    int a = 2;
+    signed a = 2;
     double b = 4.5;
     char* string1="a";
-    int* string2 = &a;
+    signed* string2 = &a;
     double* string3 = &b;
     free(string3);
     printf("%s,%ls", string1, string2);
 #else
-    char* string1 = malloc(sizeof(char));
-    int* string2 = malloc(sizeof(int));
-    float* string3 = malloc(sizeof(float));
-    double* string4 = malloc(sizeof(double));
+    char * string1 = (char *)malloc(sizeof(char));
+    signed * string2 = (signed *)malloc(sizeof(signed));
+    float * string3 = (float *)malloc(sizeof(float));
+    double * string4 = (double *)malloc(sizeof(double));
     free(string1);
     free(string2);
     free(string3);
