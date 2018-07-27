@@ -85,7 +85,7 @@ static void qiip_freenonheapobject_test(void)
 static void qiip_constantiffree_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    char* string="a";
+    char string[] = "a";
 	  if(1)
       {
         free(string);
@@ -100,7 +100,7 @@ static void qiip_constantiffree_test(void)
 static void qiip_variableiffree_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    char* string="a";
+    char string[] = "a";
     signed temp = 1;
 	  if(temp > 0)
       {
@@ -108,20 +108,24 @@ static void qiip_variableiffree_test(void)
       }
 #else
     char string[] = "a";
-    free(string);
+    signed temp = 1;
+    if(temp > 1)
+      {
+        free(string);
+      }
 #endif
   }
 
 static void qiip_doublepointerfree_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    char** string;
-	  char *string1 = "STRING";
-	  string = &string1;
+    char* string;
+	  char string1[] = "STRING";
+	  string = &string1[0];
 	  free(string);
 #else
-    char* string1 = "a";
-	  char** string = &string1;
+    char string1[] = "a";
+	  char* string = &string1[0];
 	  while(0)
       {
         free(string);
@@ -132,33 +136,33 @@ static void qiip_doublepointerfree_test(void)
 static void qiip_arrayofpointerfree_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    char *arr1 = (char*) calloc(5, sizeof(char));
-    char *arr2 = (char*) calloc(5, sizeof(char));
+    char *arr1 = (char*) malloc(sizeof(char) * 5);
+    char *arr2 = (char*) malloc(sizeof(char) * 5);
     char **parr[2] = {&arr1, &arr2};
     signed i, j = 1;
     if(arr2 != NULL)
       {
-        arr2[0] = 10.0;
+        arr2[0] = 10.0f;
       }
     for(i = 0; i < 2; i++)
       {
-      *((*parr[i]) + j) = 5.0;
+      *((*parr[i]) + j) = 5.0f;
       }
     free(arr1);
     free(arr2);
     free(parr);
 #else
-    char *arr1 = (char*) calloc(5, sizeof(char));
-    char *arr2 = (char*) calloc(5, sizeof(char));
+    char *arr1 = (char*) malloc(sizeof(char) * 5);
+    char *arr2 = (char*) malloc(sizeof(char) * 5);
     char **parr[2] = {&arr1, &arr2};
     signed i, j = 1;
     if(arr2 != NULL)
       {
-        arr2[0] = 10.0;
+        arr2[0] = 10.0f;
       }
     for(i = 0; i < 2; i++)
       {
-      *((*parr[i]) + j) = 5.0;
+      *((*parr[i]) + j) = 5.0f;
       }
     free(arr1);
     free(arr2);
@@ -169,8 +173,8 @@ static void qiip_pointertypefree_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     signed a = 2;
-    double b = 4.5;
-    char* string1="a";
+    double b = 4.5f;
+    char string1[] = "a";
     signed* string2 = &a;
     double* string3 = &b;
     free(string3);
