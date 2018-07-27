@@ -1,0 +1,6 @@
+-f'message-length=0'
+-f'show-column'
+-f'diagnostics-show-option'
+-f'diagnostics-show-category=name'
+-f'no-diagnostics-color'
+-f'diagnostics-fixit-info'
