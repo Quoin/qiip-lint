@@ -55,12 +55,13 @@ static void qiip_conversion_test(void)
     signed num = -10;
     num = num + 5;
     unsigned score = num;
+    printf("%o", score);
 #else
     signed num = -10;
     num = num + 5;
     signed score = num;
-#endif
     printf("%d", score);
+#endif
   }
 
 

@@ -107,11 +107,11 @@ build/check/%.c.o : CPPFLAGS ::=\
  # Preprocessor options for C compiled as C++.
  #
  # @note -W'no-system-headers' must be last.
+ #  -f'message-length=0' -f'no-diagnostics-color' -f'no-diagnostics-show-caret'\
  ##
 build/check/%.c.cxx.o : CPPFLAGS ::=\
   -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c++' -std='c++17' -O'3' -D'_FORTIFY_SOURCE=2' -D'_GLIBCXX_CONCEPT_CHECKS=1' -D'_GLIBCXX_ASSERTIONS=1'\
-  -f'message-length=0' -f'no-diagnostics-color' -f'no-diagnostics-show-caret'\
   @tool/gcc-6/warning-dialect-common.opt\
   @tool/gcc-6/warning-dialect-c-cxx.opt\
   @tool/gcc-6/warning-common.opt\
