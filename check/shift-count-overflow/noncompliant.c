@@ -80,11 +80,11 @@ static void qiip_intleftshiftcountoverflow_test(void)
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 1;
     int num = a << 32;
-    printf("The number is %ld", num);
+    printf("The number is %d", num);
 #else
     int a = 1;
     int num = a << 10;
-    printf("The number is %ld", num);
+    printf("The number is %d", num);
 #endif
   }
 
@@ -110,7 +110,7 @@ static void qiip_unsignedintleftshiftcountoverflow_test(void)
 #else
     unsigned int a = 1;
     unsigned int num = a << 10;
-    printf("The number is %ld", num);
+    printf("The number is %o", num);
 #endif
   }
 
@@ -123,7 +123,7 @@ static void qiip_unsignedlongleftshiftcountoverflow_test(void)
 #else
     unsigned long a = 1;
     unsigned long num = a << 10;
-    printf("The number is %ld", num);
+    printf("The number is %lo", num);
 #endif
   }
 
