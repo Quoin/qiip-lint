@@ -70,11 +70,11 @@ static void qiip_intrightshiftcountnegative_test(void)
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 1;
     int num = a >> -1;
-    printf("The number is %ld", num);
+    printf("The number is %d", num);
 #else
     int a = 1;
     int num = a >> 10;
-    printf("The number is %ld", num);
+    printf("The number is %d", num);
 #endif
   }
 
@@ -83,11 +83,11 @@ static void qiip_intleftshiftcountnegative_test(void)
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     int a = 1;
     int num = a << -1;
-    printf("The number is %ld", num);
+    printf("The number is %d", num);
 #else
     int a = 1;
     int num = a << 10;
-    printf("The number is %ld", num);
+    printf("The number is %d", num);
 #endif
   }
 
@@ -97,5 +97,6 @@ signed main(void)
     signed const result = EXIT_SUCCESS;
     qiip_signedlongshiftcountnegative_test();
     qiip_intrightshiftcountnegative_test();
+    qiip_intleftshiftcountnegative_test();
     return result;
   }
