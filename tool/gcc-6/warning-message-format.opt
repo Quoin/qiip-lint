@@ -1,0 +1,3 @@
+-f'message-length=0'
+-f'no-diagnostics-color'
+-f'no-diagnostics-show-caret'
