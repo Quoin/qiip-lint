@@ -1,2 +1,5 @@
+# Build related directories.
+build/
+
 # Eclipse related directories and files.
 .project
