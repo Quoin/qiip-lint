@@ -44,7 +44,7 @@ signed main(void);
 
 static void qiip_pointertointcast_test(void)
   {
-#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+#if !(defined __cplusplus) && !((defined QIIP_FIX) && (1 == QIIP_FIX))
     char pointer[] = "c";
     unsigned int num = (unsigned int) pointer;
     printf("The number is %u", num);
