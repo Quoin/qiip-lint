@@ -13,6 +13,8 @@
  * 
  */
 
+
+#include <cstdio>
 #include <cstdlib>
 
 
@@ -24,6 +26,22 @@ signed main(void);
 
 namespace qiip
   {
+    class local
+      {
+        public:
+          local(signed val);
+          void print(void) const;
+
+        private:
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
+          signed depends_on_value;
+          signed value;
+#else
+          signed value;
+          signed depends_on_value;
+#endif
+      };
+
 
     /**
      * Test warning when the order of member initializers.
@@ -43,28 +61,26 @@ signed main(void)
   }
 
 
+qiip::local::local(signed const val)
+  :
+    value{val},
+    depends_on_value{this->value + 1}
+  {
+  }
+
+
+void qiip::local::print(void) const
+  {
+    std::printf
+      (
+        "value=\"%d\" depends_on_value=\"%d\".\n",
+        this->value, this->depends_on_value
+      );
+  }
+
+
 static void qiip::reorder_test(void)
   {
-#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    class C
-      {
-        int dependsOnSomeVal;
-        int someVal;
-
-    public:
-        C(int val) : someVal(val), dependsOnSomeVal(someVal + 1) {}
-      };
-
-#else
-    class C
-      {
-        int someVal;
-        int dependsOnSomeVal;
-    
-
-    public:
-        C(int val) : someVal(val), dependsOnSomeVal(someVal + 1) {}
-      };
-
-#endif
+    qiip::local const obj{0};
+    obj.print();
   }
