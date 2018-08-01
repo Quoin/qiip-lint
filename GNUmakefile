@@ -22,12 +22,14 @@ QIIP_FIX ?= 0
 ###
  # C compiler.
  ##
-CC ::= clang-7
+# CC ::= clang-7
+CC ::= gcc-6
 
 ###
  # C++ compiler.
  ##
-CXX ::= clang++-7
+# CXX ::= clang++-7
+CXX ::= g++-6
 
 
 TARGET_ARCH ::= -m'64' -m'tune=native'
@@ -101,11 +103,11 @@ clean :
 build/check/%.c.o : CPPFLAGS ::=\
   -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c' -std='c11' -O'3' -D'_FORTIFY_SOURCE=2'\
-  @tool/clang-7/warning-message-format.opt\
-  @tool/clang-7/warning-dialect-common.opt\
-  @tool/clang-7/warning-dialect-c.opt\
-  @tool/clang-7/warning-common.opt\
-  @tool/clang-7/warning-c.opt\
+  @tool/gcc-6/warning-message-format.opt\
+  @tool/gcc-6/warning-dialect-common.opt\
+  @tool/gcc-6/warning-dialect-c.opt\
+  @tool/gcc-6/warning-common.opt\
+  @tool/gcc-6/warning-c.opt\
   -W'no-system-headers'
 
 ###
@@ -123,6 +125,7 @@ build/check/%.c.o : CPPFLAGS ::=\
 build/check/%.c.cxx.o : CPPFLAGS ::=\
   -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c++' -std='c++17' -O'3' -D'_FORTIFY_SOURCE=2' -D'_GLIBCXX_CONCEPT_CHECKS=1' -D'_GLIBCXX_ASSERTIONS=1'\
+  @tool/gcc-6/warning-message-format.opt\
   @tool/gcc-6/warning-dialect-common.opt\
   @tool/gcc-6/warning-dialect-c-cxx.opt\
   @tool/gcc-6/warning-common.opt\
@@ -137,11 +140,11 @@ build/check/%.c.cxx.o : CPPFLAGS ::=\
 build/check/%.cxx.o : CPPFLAGS ::=\
   -D'QIIP_FIX=$(QIIP_FIX)'\
   -x'c++' -std='c++17' -O'3' -D'_FORTIFY_SOURCE=2' -D'_GLIBCXX_CONCEPT_CHECKS=1' -D'_GLIBCXX_ASSERTIONS=1'\
-  @tool/clang-7/warning-message-format.opt\
-  @tool/clang-7/warning-dialect-common.opt\
-  @tool/clang-7/warning-dialect-cxx.opt\
-  @tool/clang-7/warning-common.opt\
-  @tool/clang-7/warning-cxx.opt\
+  @tool/gcc-6/warning-message-format.opt\
+  @tool/gcc-6/warning-dialect-common.opt\
+  @tool/gcc-6/warning-dialect-cxx.opt\
+  @tool/gcc-6/warning-common.opt\
+  @tool/gcc-6/warning-cxx.opt\
   -W'no-system-headers'
 
 
