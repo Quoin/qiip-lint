@@ -16,9 +16,10 @@
 #include <cstdlib>
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+/**
+ * Main entry point to program.
+ */
+signed main(void);
 
 
 /**
@@ -26,17 +27,6 @@ extern "C" {
  * does not match the order in which they must be executed.
  */
 static void qiip_reorder_test(void);
-
-
-/**
- * Main entry point to program.
- */
-signed main(void);
-
-
-#ifdef __cplusplus
-}
-#endif
 
 
 static void qiip_reorder_test(void)
