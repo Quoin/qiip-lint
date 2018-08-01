@@ -26,6 +26,8 @@ extern "C" {
 }
 #endif
 
+
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
 struct Base
   {
     virtual void f(void);
@@ -41,7 +43,37 @@ void f()
     // ...
     delete b;
   }
+
 signed main()
   {
-    return 0;
+    return EXIT_SUCCESS;
   }
+#else
+auto main [[gnu::nothrow]] (void) -> signed;
+
+
+struct base
+  {
+    virtual ~base(void) = default;
+    virtual auto f(void) -> void;
+  };
+ 
+struct derived : base {};
+
+auto base::f(void) -> void
+  {
+    base * const b = new derived();
+
+    std::printf("derived created.\n");
+
+    delete b;
+  }
+
+auto main(void) -> signed
+  {
+    auto const result{EXIT_SUCCESS};
+    derived d{};
+    std::printf("main.\n");
+    return result;
+  }
+#endif
