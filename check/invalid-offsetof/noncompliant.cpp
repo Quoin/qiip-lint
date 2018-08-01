@@ -34,7 +34,7 @@ signed main(void);
 }
 #endif
 
-
+#if !((defined QIIP_FIX) && (1 == QIIP_FIX))
 struct D
       {
         virtual void f() {}
@@ -46,6 +46,22 @@ void f()
     size_t off = offsetof(D, i);
     printf("The offset is %lu", off);
   }
+#else
+struct D
+  {
+    void f(void);
+    struct InnerStandardLayout
+      {
+        int i;
+      } inner;
+  };
+ 
+void D::f(void)
+  {
+    auto const off{offsetof(D::InnerStandardLayout, i)};
+    std::printf("The offset is %lu", off);
+  }
+#endif
 
 signed main()
   {
