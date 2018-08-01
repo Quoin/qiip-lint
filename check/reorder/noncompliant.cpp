@@ -22,22 +22,28 @@
 signed main(void);
 
 
-/**
- * Test warning when the order of member initializers givern in the code 
- * does not match the order in which they must be executed.
- */
-static void qiip_reorder_test(void);
+namespace qiip
+  {
 
+    /**
+     * Test warning when the order of member initializers.
+     *
+     * This checks that the order declared in the class matches the order in
+     * the constructor's member initializer list.
+     */
+    static void reorder_test(void);
+
+  }
 
 signed main(void)
   {
     signed const result = EXIT_SUCCESS;
-    qiip_reorder_test();
+    qiip::reorder_test();
     return result;
   }
 
 
-static void qiip_reorder_test(void)
+static void qiip::reorder_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
     class C
