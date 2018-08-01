@@ -29,6 +29,16 @@ signed main(void);
 static void qiip_reorder_test(void);
 
 
+
+
+signed main()
+  {
+    signed const result = EXIT_SUCCESS;
+    qiip_reorder_test();
+    return result;
+  }
+
+
 static void qiip_reorder_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
@@ -53,12 +63,4 @@ static void qiip_reorder_test(void)
       };
 
 #endif
-  }
-
-
-signed main()
-  {
-    signed const result = EXIT_SUCCESS;
-    qiip_reorder_test();
-    return result;
   }
