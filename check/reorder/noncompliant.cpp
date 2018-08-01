@@ -29,9 +29,7 @@ signed main(void);
 static void qiip_reorder_test(void);
 
 
-
-
-signed main()
+signed main(void)
   {
     signed const result = EXIT_SUCCESS;
     qiip_reorder_test();
