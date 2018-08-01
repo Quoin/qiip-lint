@@ -42,6 +42,15 @@ static void qiip_implicitfunctiondeclaration_test(void) __attribute__((nothrow))
 #endif
 
 
+static void qiip_implicitfunctiondeclaration_test(void)
+  {
+    char const msg[] = "hello, world";
+    size_t const len = strlen(msg);
+    printf("len=\"%zu\".\n", len);
+  }
+
+
+
 signed main(void)
   {
     signed const result = EXIT_SUCCESS;
@@ -51,10 +60,3 @@ signed main(void)
     return result;
   }
 
-
-static void qiip_implicitfunctiondeclaration_test(void)
-  {
-    char const msg[] = "hello, world";
-    size_t const len = strlen(msg);
-    printf("len=\"%zu\".\n", len);
-  }

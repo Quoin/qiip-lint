@@ -46,12 +46,13 @@ static void qiip_signconversion_test(void)
     int num = -10;
     num = num + 5;
     unsigned score = num;
+    printf("%o", score);
 #else
     int num = -10;
     num = num + 5;
     signed score = num;
-#endif
     printf("%d", score);
+#endif
   }
 
 

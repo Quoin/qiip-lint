@@ -43,9 +43,7 @@ signed main(void);
 static void qiip_nonnull_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    char* foo;
-    foo = strdup(NULL);
-    printf("%s\n", foo);
+    printf(NULL);
 #else
     char const * const msg = "hello, world";
     printf("msg=\"%s\".\n", msg);

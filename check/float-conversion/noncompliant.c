@@ -44,21 +44,13 @@ signed main(void);
 static void qiip_floatconversion_test(void)
   {
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-    float num = 10.0;
-    num = num + 5.5;
-    int score = fabsf(num); /* Implicit conversion that reduce precision. */
+    float num = 10.0f;
+    int score = num;
 #else
     int num = 10;
     int score = abs(num);
 #endif
-    if(score == num)
-      {
-        printf("Success!\n");
-      }
-    else
-      {
-        printf("Failure!\n");
-      }
+    printf("%d", score);
 }
 
 
