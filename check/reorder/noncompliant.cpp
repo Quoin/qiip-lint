@@ -29,8 +29,8 @@ namespace qiip
     class local
       {
         public:
-          local(signed val);
-          void print(void) const;
+          [[gnu::visibility("hidden")]] local(signed val);
+          void print [[gnu::visibility("hidden")]] (void) const;
 
         private:
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
