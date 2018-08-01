@@ -13,10 +13,7 @@
  * 
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <stdint.h>
+#include <cstdlib>
 
 
 #ifdef __cplusplus
