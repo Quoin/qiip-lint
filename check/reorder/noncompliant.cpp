@@ -10,7 +10,6 @@
  * @see SEI CERT C Coding Standard: Rule OOP53-CPP. Write constructor
  *   member initializers in the canonical order
  *   https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP53-CPP.+Write+constructor+member+initializers+in+the+canonical+order
- * 
  */
 
 
@@ -21,41 +20,44 @@
 /**
  * Main entry point to program.
  */
-signed main(void);
+auto main(void) -> signed;
 
 
-namespace qiip
+namespace 
   {
-    class local
+    namespace qiip
       {
-        public:
-          [[gnu::visibility("hidden")]] local(signed val);
-          void print [[gnu::visibility("hidden")]] (void) const;
+        class local
+          {
+            public:
+              local(signed val);
+              auto print(void) const -> void;
 
-        private:
+            private:
 #if !((defined QIIP_FIX) && (1 == QIIP_FIX))
-          signed depends_on_value;
-          signed value;
+              signed depends_on_value;
+              signed value;
 #else
-          signed value;
-          signed depends_on_value;
+              signed value;
+              signed depends_on_value;
 #endif
-      };
+          };
 
 
-    /**
-     * Test warning when the order of member initializers.
-     *
-     * This checks that the order declared in the class matches the order in
-     * the constructor's member initializer list.
-     */
-    static void reorder_test(void);
-
+        /**
+         * Test warning when the order of member initializers.
+         *
+         * This checks that the order declared in the class matches the order in
+         * the constructor's member initializer list.
+         */
+        auto reorder_test(void) -> void;
+      }
   }
 
-signed main(void)
+
+auto main(void) -> signed
   {
-    signed const result = EXIT_SUCCESS;
+    auto const result{EXIT_SUCCESS};
     qiip::reorder_test();
     return result;
   }
@@ -69,7 +71,7 @@ qiip::local::local(signed const val)
   }
 
 
-void qiip::local::print(void) const
+auto qiip::local::print(void) const -> void
   {
     std::printf
       (
@@ -79,7 +81,7 @@ void qiip::local::print(void) const
   }
 
 
-static void qiip::reorder_test(void)
+auto qiip::reorder_test(void) -> void
   {
     qiip::local const obj{0};
     obj.print();
