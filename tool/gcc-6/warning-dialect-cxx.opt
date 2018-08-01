@@ -1,4 +1,3 @@
--W'no-c++98-compat'
 -W'no-c++0x-compat'
 -W'no-c++11-compat'
 -W'no-c++14-compat'
