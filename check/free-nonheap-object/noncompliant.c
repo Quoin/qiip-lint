@@ -178,7 +178,7 @@ static void qiip_pointertypefree_test(void)
     signed* string2 = &a;
     double* string3 = &b;
     free(string3);
-    printf("%s,%ls", string1, string2);
+    printf("%s,%n", string1, string2);
 #else
     char * string1 = (char *)malloc(sizeof(char));
     signed * string2 = (signed *)malloc(sizeof(signed));
